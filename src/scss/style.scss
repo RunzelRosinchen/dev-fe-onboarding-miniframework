@@ -61,12 +61,12 @@ $red: #f08280;
   }
 }
 
-.contact {
+.contactToggleBox {
   background-color: $background-blue;
   position: relative;
   height: 150px;
   z-index: 1;
-  &__headline {
+  p {
     margin-left: 10vw;
     padding-top: 20px;
     color: white;
