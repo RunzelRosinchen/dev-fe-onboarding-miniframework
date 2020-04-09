@@ -1,24 +1,9 @@
-function contactToggle1() {
-  let x = document.getElementById("contact1");
-  if (x.className === "contactToggleBox") {
-    x.className += " contactToggleBox--hidden";
-  } else {
-    x.className = "contactToggleBox ";
-  }
-}
-function contactToggle2() {
-  let x = document.getElementById("contact2");
-  if (x.className === "contactToggleBox") {
-    x.className += " contactToggleBox--hidden";
-  } else {
-    x.className = "contactToggleBox";
-  }
-}
-function contactToggle3() {
-  let x = document.getElementById("contact3");
-  if (x.className === "contactToggleBox") {
-    x.className += " contactToggleBox--hidden";
-  } else {
-    x.className = "contactToggleBox";
-  }
+function contactToggle(event) {
+    let btn=event.target.getAttribute("linked-to");
+    let box = document.getElementById(btn);
+    if (box.className === "contactToggleBox") {
+      box.className += " contactToggleBox--hidden";
+    } else {
+      box.className = "contactToggleBox";
+    }
 }
