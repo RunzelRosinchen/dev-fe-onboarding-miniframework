@@ -1,4 +1,4 @@
-function contactToggle(event) {
+function contactBoxToggle(event) {
     let btn=event.target.getAttribute("linked-to");
     let box = document.getElementById(btn);
     if (box.className === "contactToggleBox") {
