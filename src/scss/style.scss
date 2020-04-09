@@ -2,156 +2,84 @@
 $background-gray: #ecede9;
 $background-blue: #303c53;
 $red: #f08280;
-@mixin red-line {
-  padding-left: 5px;
 
+@mixin redLine {
+  padding-left: 5px;
   -webkit-box-shadow: -4px 0px 0px 0px red;
   -moz-box-shadow: -4px 0px 0px 0px red;
   box-shadow: -4px 0px 0px 0px red;
 }
+
 .headline {
   margin-left: 10vw;
-  @include red-line();
+  @include redLine();
 }
 
-.main-conversion {
+.mainConversion {
   $this: &;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-left: 10vw;
-
   background-color: $background-gray;
-
   div {
     padding-right: 5vw;
   }
-
-  #{$this}__img {
+  img {
     width: 50%;
     height: auto;
   }
-  #{$this}__headline {
+  h2 {
     margin-bottom: 10px;
   }
-  #{$this}__btn {
+  a {
     padding: 10px 15px;
-
     background-color: black;
     color: white;
-
     text-decoration: none;
     font-size: 0.8em;
   }
-  #{$this}__text {
+  p {
     margin-bottom: 30px;
     margin-top: 0;
-
     font-size: 0.8em;
   }
 
-  @at-root #{&}--red-headline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-left: 10vw;
-
-    background-color: $background-gray;
-    div {
-      padding-right: 5vw;
-    }
-    #{$this}__img {
-      width: 50%;
-      height: auto;
-    }
-    #{$this}__headline {
+  &--redHeadline {
+    h2 {
       margin-bottom: 10px;
-
       color: $red;
-    }
-    #{$this}__btn {
-      padding: 10px 15px;
-
-      background-color: black;
-      border: none;
-      color: white;
-
-      text-decoration: none;
-      font-size: 0.8em;
-    }
-    #{$this}__text {
-      margin-bottom: 30px;
-      margin-top: 0;
-
-      font-size: 0.8em;
     }
   }
 
-  @at-root #{&}--secondary {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    padding-left: 10vw;
-
-    background-color: $background-gray;
-    div {
-      padding-right: 5vw;
-      order: 2;
-    }
-    #{$this}__img {
+  &--leftImage {
+    img {
       order: 1;
       width: 35%;
       height: auto;
       margin: 50px 0;
       padding-right: 20px;
     }
-    #{$this}__headline {
-      margin-bottom: 10px;
-    }
-    #{$this}__btn {
-      padding: 10px 15px;
-
-      background-color: $red;
-      border: none;
-      color: white;
-
-      text-decoration: none;
-      font-size: 0.8em;
-    }
-    #{$this}__text {
-      margin-bottom: 30px;
-      margin-top: 0;
-
-      font-size: 0.8em;
-    }
   }
 }
+
 .contact {
   background-color: $background-blue;
   position: relative;
-
   height: 150px;
-
   z-index: 1;
-
-  @at-root #{&}__headline {
+  &__headline {
     margin-left: 10vw;
     padding-top: 20px;
     color: white;
-
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-
     z-index: 2;
   }
-
-  @at-root #{&}--hidden {
+  &--hidden {
     display: none;
   }
-  @at-root #{&}:before {
+  &:before {
     content: "";
     width: 40px;
     height: 40px;
@@ -160,7 +88,6 @@ $red: #f08280;
     top: 0;
     left: 10vw;
     transform: translateX(-50%) rotate(45deg);
-
     z-index: -1;
   }
 }
