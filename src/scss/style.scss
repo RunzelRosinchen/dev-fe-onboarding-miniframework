@@ -15,6 +15,7 @@ $red: #f08280;
 }
 
 .main-conversion {
+  $this: &;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,14 +27,15 @@ $red: #f08280;
   div {
     padding-right: 5vw;
   }
-  @at-root #{&}__img {
+
+  #{$this}__img {
     width: 50%;
     height: auto;
   }
-  @at-root #{&}__headline {
+  #{$this}__headline {
     margin-bottom: 10px;
   }
-  @at-root #{&}__btn {
+  #{$this}__btn {
     padding: 10px 15px;
 
     background-color: black;
@@ -42,7 +44,7 @@ $red: #f08280;
     text-decoration: none;
     font-size: 0.8em;
   }
-  @at-root #{&}__text {
+  #{$this}__text {
     margin-bottom: 30px;
     margin-top: 0;
 
@@ -60,16 +62,16 @@ $red: #f08280;
     div {
       padding-right: 5vw;
     }
-    @at-root #{&}__img {
+    #{$this}__img {
       width: 50%;
       height: auto;
     }
-    @at-root #{&}__headline {
+    #{$this}__headline {
       margin-bottom: 10px;
 
       color: $red;
     }
-    @at-root #{&}__btn {
+    #{$this}__btn {
       padding: 10px 15px;
 
       background-color: black;
@@ -79,7 +81,7 @@ $red: #f08280;
       text-decoration: none;
       font-size: 0.8em;
     }
-    @at-root #{&}__text {
+    #{$this}__text {
       margin-bottom: 30px;
       margin-top: 0;
 
@@ -99,17 +101,17 @@ $red: #f08280;
       padding-right: 5vw;
       order: 2;
     }
-    @at-root #{&}__img {
+    #{$this}__img {
       order: 1;
       width: 35%;
       height: auto;
       margin: 50px 0;
       padding-right: 20px;
     }
-    @at-root #{&}__headline {
+    #{$this}__headline {
       margin-bottom: 10px;
     }
-    @at-root #{&}__btn {
+    #{$this}__btn {
       padding: 10px 15px;
 
       background-color: $red;
@@ -119,7 +121,7 @@ $red: #f08280;
       text-decoration: none;
       font-size: 0.8em;
     }
-    @at-root #{&}__text {
+    #{$this}__text {
       margin-bottom: 30px;
       margin-top: 0;
 
@@ -149,16 +151,16 @@ $red: #f08280;
   @at-root #{&}--hidden {
     display: none;
   }
-}
-.contact:before {
-  content: "";
-  width: 40px;
-  height: 40px;
-  background-color: $background-blue;
-  position: absolute;
-  top: 0;
-  left: 10vw;
-  transform: translateX(-50%) rotate(45deg);
+  @at-root #{&}:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-color: $background-blue;
+    position: absolute;
+    top: 0;
+    left: 10vw;
+    transform: translateX(-50%) rotate(45deg);
 
-  z-index: -1;
+    z-index: -1;
+  }
 }

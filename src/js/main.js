@@ -1,5 +1,3 @@
-
-
 function contactToggle1() {
     let x = document.getElementById("contact1");
     if (x.className === "contact") {
