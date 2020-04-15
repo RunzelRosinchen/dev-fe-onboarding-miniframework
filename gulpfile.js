@@ -28,6 +28,11 @@ gulp.task('html', function (done) {
   done()
 });
 
+gulp.task('assets', function (done) {
+  gulp.src('./src/assets/*').pipe(gulp.dest('./srv/assets/'));
+  done()
+});
+
 gulp.task('connect:open', function() {
   const open = require('open');
   return open('http://localhost:1337');
@@ -53,4 +58,4 @@ gulp.task('livereload', function(done) {
   gulp.watch('./src/**/*', gulp.series('livereload'));
 });
 
-gulp.task('default', gulp.parallel('sass', 'js', 'html', 'connect', 'connect:open', 'watch'));
+gulp.task('default', gulp.parallel('sass', 'js', 'html', 'assets', 'connect', 'connect:open', 'watch'));
