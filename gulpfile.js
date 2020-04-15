@@ -41,8 +41,9 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('livereload', function() {
+gulp.task('livereload', function(done) {
   gulp.src('./srv/**/*').pipe(connect.reload());
+  done()
 });
   
   gulp.task('watch', function() {
@@ -52,4 +53,4 @@ gulp.task('livereload', function() {
   gulp.watch('./src/**/*', gulp.series('livereload'));
 });
 
-gulp.task('default', gulp.series('sass', 'js', 'html', 'connect', 'connect:open', 'watch'));
+gulp.task('default', gulp.parallel('sass', 'js', 'html', 'connect', 'connect:open', 'watch'));
