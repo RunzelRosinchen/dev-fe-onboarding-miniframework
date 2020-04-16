@@ -11,7 +11,6 @@ $red: #f08280;
 }
 
 .mainConversion {
-  
   &__flexWrapper {
     display: flex;
     justify-content: space-between;
@@ -74,7 +73,7 @@ $red: #f08280;
     height: 150px;
     z-index: -1;
     margin-top: -160px;
-    
+
     p {
       font-size: 1.2em;
       margin-left: calc(10vw - 10px);
@@ -91,10 +90,12 @@ $red: #f08280;
       animation-name: slidedown;
       margin-top: 10px;
     }
+
     &--close {
       animation-name: slideup;
       animation-duration: 0.5s;
     }
+
     &:before {
       content: "";
       width: 40px;
@@ -109,7 +110,7 @@ $red: #f08280;
   }
 }
 
-@keyframes slidedown{
+@keyframes slidedown {
   from {
     margin-top: -160px;
   }
@@ -117,7 +118,8 @@ $red: #f08280;
     margin-top: 10px;
   }
 }
-@keyframes slideup{
+
+@keyframes slideup {
   from {
     margin-top: 10px;
   }
