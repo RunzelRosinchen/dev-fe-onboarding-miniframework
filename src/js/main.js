@@ -17,9 +17,8 @@
 
 let allBtns = document.querySelectorAll(".mainConversion__btn");
 allBtns.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    contactBoxToggle(event);
-  });
+  btn.addEventListener("click",
+    contactBoxToggle(event));
 });
 
 function contactBoxToggle(event) {
