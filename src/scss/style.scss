@@ -86,9 +86,13 @@ $red: #f08280;
 
     &--open {
       display: block;
+      margin-top: 10px;
       animation-duration: 0.5s;
       animation-name: slidedown;
-      margin-top: 10px;
+    }
+
+    &--hidden {
+      display: none;
     }
 
     &--close {
