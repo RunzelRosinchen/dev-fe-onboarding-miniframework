@@ -15,10 +15,13 @@
 //   }
 // }
 
+
+
+//js version
 let allBtns = document.querySelectorAll(".mainConversion__btn");
 allBtns.forEach((btn) => {
   btn.addEventListener("click",
-    contactBoxToggle(event));
+    function() {contactBoxToggle(event)});
 });
 
 function contactBoxToggle(event) {
@@ -36,10 +39,10 @@ function contactBoxToggle(event) {
   });
 }
 
-// jQuery version <-- Remove onclick="contactBoxToggle(event)" from a, add mainConversion__contactToggleBox--close mainConversion__contactToggleBox--hidden to contactToggleBox
 
+
+// // jQuery version 
 // $("a.mainConversion__btn").click(function(){
-//   let parent=$("a.mainConversion__btn").closest(".mainConversion");
-//   $("div.mainConversion__contactToggleBox").removeClass("mainConversion__contactToggleBox--hidden");
-//   $("div.mainConversion__contactToggleBox").toggleClass("mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close");
+//   $("a.mainConversion__btn").closest(".mainConversion").find("div.mainConversion__contactToggleBox").removeClass("mainConversion__contactToggleBox--hidden");
+//   $("a.mainConversion__btn").closest(".mainConversion").find("div.mainConversion__contactToggleBox").toggleClass("mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close");
 // });
