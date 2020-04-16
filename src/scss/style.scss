@@ -72,10 +72,9 @@ $red: #f08280;
     background-color: $background-blue;
     position: relative;
     height: 150px;
-    z-index: 1;
-    margin-top: 10px;
-    display: none;
-
+    z-index: -1;
+    margin-top: -160px;
+    
     p {
       font-size: 1.2em;
       margin-left: calc(10vw - 10px);
@@ -88,8 +87,14 @@ $red: #f08280;
 
     &--open {
       display: block;
+      animation-duration: 0.5s;
+      animation-name: slidedown;
+      margin-top: 10px;
     }
-
+    &--close {
+      animation-name: slideup;
+      animation-duration: 0.5s;
+    }
     &:before {
       content: "";
       width: 40px;
@@ -99,7 +104,24 @@ $red: #f08280;
       top: 0;
       left: 10vw;
       transform: translateX(-50%) rotate(45deg);
-      z-index: -1;
+      z-index: -2;
     }
+  }
+}
+
+@keyframes slidedown{
+  from {
+    margin-top: -160px;
+  }
+  to {
+    margin-top: 10px;
+  }
+}
+@keyframes slideup{
+  from {
+    margin-top: 10px;
+  }
+  to {
+    margin-top: -160px;
   }
 }

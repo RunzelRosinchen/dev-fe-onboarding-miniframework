@@ -18,15 +18,13 @@ function contactBoxToggle(event) {
 /* js version */
 let closeEvent = new CustomEvent("close");
 let allBoxes = [].slice.call(
-    document.querySelectorAll(".mainConversion__contactToggleBox")
+  document.querySelectorAll(".mainConversion__contactToggleBox")
 );
 allBoxes.forEach((boxes) => {
   boxes.addEventListener("close", function () {
-    boxes.className = "mainConversion__contactToggleBox";
-  }
-  )
+    boxes.className = "mainConversion__contactToggleBox mainConversion__contactToggleBox--close";
+  });
 });
-
 function contactBoxToggle(event) {
   let closeEvent = new CustomEvent("close");
   let openBoxes = [].slice.call(
@@ -43,11 +41,13 @@ function contactBoxToggle(event) {
   openBoxes.forEach((boxes) => {
     boxes.dispatchEvent(closeEvent);
   });
-  if (box[0].className === "mainConversion__contactToggleBox") {
+  if (box[0].className === "mainConversion__contactToggleBox" || box[0].className === "mainConversion__contactToggleBox mainConversion__contactToggleBox--close") {
     box[0].classList.add("mainConversion__contactToggleBox--open");
+    box[0].classList.remove("mainConversion__contactToggleBox--close")
   } else {
     box[0].classList.remove("mainConversion__contactToggleBox--open");
-  }
+    box[0].classList.add("mainConversion__contactToggleBox--close");
+}
 }
 
 /* jQuery version
