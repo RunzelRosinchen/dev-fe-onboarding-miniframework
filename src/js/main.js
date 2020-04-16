@@ -16,24 +16,31 @@ function contactBoxToggle(event) {
 }*/
 
 /* js version */
+let closeEvent = new CustomEvent("close");
+let allBoxes = [].slice.call(
+    document.querySelectorAll(".mainConversion__contactToggleBox")
+);
+allBoxes.forEach((boxes) => {
+  boxes.addEventListener("close", function () {
+    boxes.className = "mainConversion__contactToggleBox";
+  }
+  )
+});
 
 function contactBoxToggle(event) {
   let closeEvent = new CustomEvent("close");
-  let allBoxes = [].slice.call(
-    document.querySelectorAll(".mainConversion__contactToggleBox")
+  let openBoxes = [].slice.call(
+    document.querySelectorAll(".mainConversion__contactToggleBox--open")
   );
   let box = [].slice.call(
     event.target
       .closest(".mainConversion")
       .getElementsByClassName("mainConversion__contactToggleBox")
   );
-  allBoxes = allBoxes.filter(function (item) {
+  openBoxes = openBoxes.filter(function (item) {
     return !box.includes(item);
   });
-  allBoxes.forEach((boxes) => {
-    boxes.addEventListener("close", function () {
-      boxes.className = "mainConversion__contactToggleBox";
-    });
+  openBoxes.forEach((boxes) => {
     boxes.dispatchEvent(closeEvent);
   });
   if (box[0].className === "mainConversion__contactToggleBox") {
