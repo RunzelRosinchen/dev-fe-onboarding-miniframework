@@ -37,22 +37,49 @@
 // }
 
 // jQuery version
-$(document).ready(function () {
-  $("div.mainConversion__contactToggleBox").css("display", "none");
-  $("div.mainConversion__contactToggleBox").addClass(
-    "mainConversion__contactToggleBox--close"
-  );
-});
+// $(document).ready(function () {
+//   $("div.mainConversion__contactToggleBox").css("display", "none");
+//   $("div.mainConversion__contactToggleBox").addClass(
+//     "mainConversion__contactToggleBox--close"
+//   );
+// });
+
+// $("a.mainConversion__btn").click(function () {
+//   contactBoxToggle(event);
+// });
+
+// function contactBoxToggle(event) {
+//   $(event.target)
+//       .closest(".mainConversion")
+//       .children(".mainConversion__contactToggleBox").css("display", "block");
+//   if ($(event.target)
+//       .closest(".mainConversion")
+//       .children(".mainConversion__contactToggleBox")
+//       .hasClass("mainConversion__contactToggleBox--open")
+//   ) {
+//     $(".mainConversion__contactToggleBox--open").toggleClass(
+//       "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+//     );
+//   } else {
+//     $(".mainConversion__contactToggleBox--open").toggleClass(
+//       "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+//     );
+//     $(event.target)
+//       .closest(".mainConversion")
+//       .children(".mainConversion__contactToggleBox")
+//       .toggleClass(
+//         "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+//       );
+//   }
+// }
 
 $("a.mainConversion__btn").click(function () {
   contactBoxToggle(event);
 });
 
 function contactBoxToggle(event) {
-  $(event.target)
-      .closest(".mainConversion")
-      .children(".mainConversion__contactToggleBox").css("display", "block");
-  if ($(event.target)
+  if (
+    $(event.target)
       .closest(".mainConversion")
       .children(".mainConversion__contactToggleBox")
       .hasClass("mainConversion__contactToggleBox--open")
@@ -67,21 +94,10 @@ function contactBoxToggle(event) {
     $(event.target)
       .closest(".mainConversion")
       .children(".mainConversion__contactToggleBox")
-      .toggleClass(
-        "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
-      );
+      .removeClass("mainConversion__contactToggleBox--close");
+    $(event.target)
+      .closest(".mainConversion")
+      .children(".mainConversion__contactToggleBox")
+      .addClass("mainConversion__contactToggleBox--open");
   }
 }
-// if (
-//   $(targetBox).hasClass("mainConversion__contactToggleBox--close")
-// ) {
-//   $(".mainConversion__contactToggleBox--open").toggleClass(
-//     "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
-//   );
-//   targetBox.toggleClass(
-//       "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
-//     );
-// }
-// $(".mainConversion__contactToggleBox--open").toggleClass(
-//   "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
-// );
