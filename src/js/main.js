@@ -15,34 +15,73 @@
 //   }
 // }
 
-
-
 //js version
-let allBtns = document.querySelectorAll(".mainConversion__btn");
-allBtns.forEach((btn) => {
-  btn.addEventListener("click",
-    function() {contactBoxToggle(event)});
+// let allBtns = document.querySelectorAll(".mainConversion__btn");
+// allBtns.forEach((btn) => {
+//   btn.addEventListener("click",
+//     function() {contactBoxToggle(event)});
+// });
+// function contactBoxToggle(event) {
+//   let openBoxes = document.querySelectorAll(".mainConversion__contactToggleBox--open");
+//   let targetBox = event.target
+//     .closest(".mainConversion")
+//     .querySelector(".mainConversion__contactToggleBox");
+//   if (!targetBox.classList.contains("mainConversion__contactToggleBox--open")) {
+//     targetBox.classList.add("mainConversion__contactToggleBox--open");
+//     targetBox.classList.remove("mainConversion__contactToggleBox--close");
+//   }
+//   openBoxes.forEach((box) => {
+//     box.classList.remove("mainConversion__contactToggleBox--open");
+//     box.classList.add("mainConversion__contactToggleBox--close");
+//   });
+// }
+
+// jQuery version
+$(document).ready(function () {
+  $("div.mainConversion__contactToggleBox").css("display", "none");
+  $("div.mainConversion__contactToggleBox").addClass(
+    "mainConversion__contactToggleBox--close"
+  );
+});
+
+$("a.mainConversion__btn").click(function () {
+  contactBoxToggle(event);
 });
 
 function contactBoxToggle(event) {
-  let openBoxes = document.querySelectorAll(".mainConversion__contactToggleBox--open");
-  let targetBox = event.target
-    .closest(".mainConversion")
-    .querySelector(".mainConversion__contactToggleBox");
-  if (!targetBox.classList.contains("mainConversion__contactToggleBox--open")) {
-    targetBox.classList.add("mainConversion__contactToggleBox--open");
-    targetBox.classList.remove("mainConversion__contactToggleBox--close");
+  $(event.target)
+      .closest(".mainConversion")
+      .children(".mainConversion__contactToggleBox").css("display", "block");
+  if ($(event.target)
+      .closest(".mainConversion")
+      .children(".mainConversion__contactToggleBox")
+      .hasClass("mainConversion__contactToggleBox--open")
+  ) {
+    $(".mainConversion__contactToggleBox--open").toggleClass(
+      "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+    );
+  } else {
+    $(".mainConversion__contactToggleBox--open").toggleClass(
+      "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+    );
+    $(event.target)
+      .closest(".mainConversion")
+      .children(".mainConversion__contactToggleBox")
+      .toggleClass(
+        "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+      );
   }
-  openBoxes.forEach((box) => {
-    box.classList.remove("mainConversion__contactToggleBox--open");
-    box.classList.add("mainConversion__contactToggleBox--close");
-  });
 }
-
-
-
-// // jQuery version 
-// $("a.mainConversion__btn").click(function(){
-//   $("a.mainConversion__btn").closest(".mainConversion").find("div.mainConversion__contactToggleBox").removeClass("mainConversion__contactToggleBox--hidden");
-//   $("a.mainConversion__btn").closest(".mainConversion").find("div.mainConversion__contactToggleBox").toggleClass("mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close");
-// });
+// if (
+//   $(targetBox).hasClass("mainConversion__contactToggleBox--close")
+// ) {
+//   $(".mainConversion__contactToggleBox--open").toggleClass(
+//     "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+//   );
+//   targetBox.toggleClass(
+//       "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+//     );
+// }
+// $(".mainConversion__contactToggleBox--open").toggleClass(
+//   "mainConversion__contactToggleBox--open mainConversion__contactToggleBox--close"
+// );
