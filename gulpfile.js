@@ -1,32 +1,41 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+sass.compiler = require('node-sass');
 const connect = require('gulp-connect');
 var rename = require('gulp-rename');
 
-gulp.task('sass', function() {
+gulp.task('sass', function(done) {
   gulp
     .src(['./src/scss/*.scss'])
     .pipe(
       sass({
         includePaths: ['./src/scss'],
         outputStyle: 'expanded'
-      })
+      }).on('error', sass.logError)
     )
-    .pipe(gulp.dest('./srv/ssc'));
+    .pipe(gulp.dest('./srv/css'));
+    done()
 });
 
-gulp.task('js', function(){
+gulp.task('js', function(done){
   gulp.src(['./src/js/*.js']).pipe(gulp.dest('./srv/js/'));
   gulp.src('./node_modules/es6-scroll-to/lib/index.js').pipe(rename('es6-scroll-to.js')).pipe(gulp.dest('./srv/js/'));
+  done()
 });
 
-gulp.task('html', function () {
+gulp.task('html', function (done) {
   gulp.src('./src/*.html').pipe(gulp.dest('./srv/'));
-})
+  done()
+});
+
+gulp.task('assets', function (done) {
+  gulp.src('./src/assets/*').pipe(gulp.dest('./srv/assets/'));
+  done()
+});
 
 gulp.task('connect:open', function() {
-  const opn = require('opn');
-  return opn('http://localhost:1337');
+  const open = require('open');
+  return open('http://localhost:1337');
 });
 
 gulp.task('connect', function() {
@@ -37,15 +46,16 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('livereload', function() {
+gulp.task('livereload', function(done) {
   gulp.src('./srv/**/*').pipe(connect.reload());
+  done()
+});
+  
+  gulp.task('watch', function() {
+  gulp.watch('./src/*.html', gulp.series('html'));
+  gulp.watch('./src/js/*.js', gulp.series('js'));
+  gulp.watch('./src/scss/*.scss', gulp.series('sass'));
+  gulp.watch('./src/**/*', gulp.series('livereload'));
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./src/*.html', ['html']);
-  gulp.watch('./src/js/*.js', ['js']);
-  gulp.watch('./src/scss/*.scss', ['sass']);
-  gulp.watch('./src/**/*', ['livereload']);
-});
-
-gulp.task('default', ['connect', 'connect:open', 'watch', 'sass', 'js', 'html']);
+gulp.task('default', gulp.parallel('sass', 'js', 'html', 'assets', 'connect', 'connect:open', 'watch'));

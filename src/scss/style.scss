@@ -1,14 +1,128 @@
-body {
-  background-color: pink;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  height: 2000px;
+//color variables
+$background-gray: #ecede9;
+$background-blue: #303c53;
+$red: #f08280;
+
+@mixin redLine {
+  padding-left: 5px;
+  -webkit-box-shadow: -4px 0px 0px 0px red;
+  -moz-box-shadow: -4px 0px 0px 0px red;
+  box-shadow: -4px 0px 0px 0px red;
 }
 
-.content {
-  position: absolute;
-  top: 600px;
-  background-color: #fefefe;
-  padding: 50px;
-  margin: 20px;
-  box-shadow: inset 1px 1px 11px 0px black;
+.mainConversion {
+  &__flexWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10vw;
+    background-color: $background-gray;
+  }
+
+  &__textWrapper {
+    padding-right: 5vw;
+  }
+
+  h2 {
+    margin-left: 10vw;
+    @include redLine();
+  }
+
+  img {
+    width: 50%;
+    height: auto;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 30px;
+    margin-top: 0;
+    font-size: 0.8em;
+  }
+
+  &__btn {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+  }
+
+  &--redHeadline {
+    h3 {
+      color: $red;
+    }
+  }
+
+  &--leftImage {
+    img {
+      order: 1;
+      width: 35%;
+      margin: 50px 0;
+      padding-right: 20px;
+    }
+  }
+
+  &__contactToggleBox {
+    background-color: $background-blue;
+    position: relative;
+    height: 150px;
+    z-index: -1;
+    margin-top: -160px;
+
+    p {
+      font-size: 1.2em;
+      margin-left: calc(10vw - 10px);
+      padding-top: 20px;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    &--open {
+      margin-top: 10px;
+      animation-duration: 0.5s;
+      animation-name: slidedown;
+    }
+
+    &--close {
+      animation-name: slideup;
+      animation-duration: 0.5s;
+    }
+
+    &:before {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background-color: $background-blue;
+      position: absolute;
+      top: 0;
+      left: 10vw;
+      transform: translateX(-50%) rotate(45deg);
+      z-index: -2;
+    }
+  }
+}
+
+@keyframes slidedown {
+  from {
+    margin-top: -160px;
+  }
+  to {
+    margin-top: 10px;
+  }
+}
+
+@keyframes slideup {
+  from {
+    margin-top: 10px;
+  }
+  to {
+    margin-top: -160px;
+  }
 }
